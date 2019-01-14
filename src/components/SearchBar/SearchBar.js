@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
 import axios from "axios";
-// import curl from 'curl';
-
-// let config = {
-//     headers: {"X-Auth-API-Key" : "jwjs2jxp2bxuh9m37bd8npp5"}
-// };
 
 class SearchBar extends Component {
   state = {
     country: "",
-    advisoryState: ""
+    advisoryState: "",
+    climateInfo: []
   };
 
   handleChange = property => event => {
@@ -23,8 +19,6 @@ class SearchBar extends Component {
     event.preventDefault();
     console.log(this.state.country);
 
-    // curl -i -H 'Content-Type: application/x-www-form-urlencoded'  'https://api.tugo.com/v1/travelsafe/countries/GR'  -H "X-Auth-API-Key:abcdefghijklmnopqrstuvwxy"
-
     axios
       .get(
         `https://api.tugo.com/v1/travelsafe/countries/${this.state.country}`,
@@ -33,8 +27,13 @@ class SearchBar extends Component {
               "X-Auth-API-Key": "pzxtdae4ap3rd4sswp6uhdk2", 'Access-Control-Allow-Origin': '*'
             }
         }).then(response => 
+            // console.log(response.data)
+            
         this.setState({
-            advisoryState: response.data.advisories.description
+            advisoryState: response.data.advisories.description,
+            climateInfo: response.data.climateInfo,
+            
+
         }),
         console.log(this.advisoryState)
     );
@@ -43,12 +42,14 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
-        <input
-          placeholder="country"
-          value={this.state.country}
-          onChange={this.handleChange("country")}
-        />
-        <button onClick={this.handleSubmit}>Submit</button>
+        <form onSubmit={this.handleSubmit}>
+            <input
+            placeholder="country"
+            value={this.state.country}
+            onChange={this.handleChange("country")}
+            />
+            <button onClick={this.handleSubmit}>Submit</button>
+        </form>
         <p>Country: {this.state.country}</p>
         <p>Advisory: {this.state.advisoryState}</p>
       </div>
