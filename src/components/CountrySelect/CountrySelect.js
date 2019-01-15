@@ -59,7 +59,7 @@ class CountrySelect extends Component {
         this.setState({
           countryInfo: response.data
         }),
-        console.log(this.countryInfo)
+        // console.log(response.data)
 
         // this.props.dispatch({
         //   type: "CHOOSE_COUNTRY",
@@ -125,6 +125,9 @@ class CountrySelect extends Component {
             <Typography component="p">
                 Recent Updates: {this.state.countryInfo.recentUpdates}
             </Typography>
+            {/* <Typography component="p">
+                Vaccines: {this.state.health.diseasesAndVaccinesInfo.vaccines}
+            </Typography> */}
             {/* </Paper> */}
 
         {/* <p>{this.state.countryInfo.advisoryText}</p> */}
