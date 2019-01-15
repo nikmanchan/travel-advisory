@@ -1,6 +1,25 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
 import axios from "axios";
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+
+// jss styles
+const styles = theme => ({
+  container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+  },
+  formControl: {
+      margin: theme.spacing.unit,
+  },
+  button: {
+      margin: theme.spacing.unit,
+  },
+
+});
 
 class SearchBar extends Component {
   state = {
@@ -28,14 +47,15 @@ class SearchBar extends Component {
             }
         }).then(response => 
             // console.log(response.data)
-            
-        this.setState({
-            advisoryState: response.data.advisories.description,
-            climateInfo: response.data.climateInfo,
-            
-
-        }),
-        console.log(this.advisoryState)
+            this.props.dispatch({
+              type: 'CHOOSE_COUNTRY', payload: response.data
+            })
+          
+        // this.setState({
+        //     advisoryState: response.data.advisories.description,
+        //     climateInfo: response.data.climateInfo,
+        // }),
+        // console.log(this.advisoryState)
     );
   };
 
@@ -48,7 +68,7 @@ class SearchBar extends Component {
             value={this.state.country}
             onChange={this.handleChange("country")}
             />
-            <button onClick={this.handleSubmit}>Submit</button>
+            <Button onClick={this.handleSubmit}>Submit</Button>
         </form>
         <p>Country: {this.state.country}</p>
         <p>Advisory: {this.state.advisoryState}</p>
@@ -57,4 +77,13 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+  country: state.country
+});
+
+// needed for jss styles
+SearchBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(connect(mapStateToProps)(SearchBar));
