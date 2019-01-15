@@ -9,6 +9,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import TravelContent from "../TravelContent/TravelContent";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 // jss styles
 const styles = theme => ({
@@ -34,7 +37,7 @@ class CountrySelect extends Component {
   state = {
     country: "",
     advisoryState: "",
-    climateInfo: []
+    countryInfo: []
   };
 
   handleChange = property => event => {
@@ -52,10 +55,20 @@ class CountrySelect extends Component {
         }
       )
       .then(response =>
-        this.props.dispatch({
-          type: "CHOOSE_COUNTRY",
-          payload: response.data
-        })
+
+        this.setState({
+          countryInfo: response.data
+        }),
+        console.log(this.countryInfo)
+
+        // this.props.dispatch({
+        //   type: "CHOOSE_COUNTRY",
+        //   payload: response.data
+        // }),
+        // this.props.dispatch({
+        //   type: 'SHOW_INFO',
+        //   payload: 'true'
+        // })
       );
   };
 
@@ -96,6 +109,25 @@ class CountrySelect extends Component {
             <FormHelperText>Choose a country</FormHelperText>
           </FormControl>
         </form>
+        {/* <TravelContent 
+        countryInfo = {this.countryInfo}
+        /> */}
+            {/* <Paper className={classes.root} elevation={1}> */}
+            <Typography variant="h5" component="h3">
+                Advisories
+            </Typography>
+            <Typography component="p">
+                Publish Date: {this.state.countryInfo.publishedDate}
+            </Typography>
+            <Typography component="p">
+                Status: {this.state.countryInfo.advisoryText}
+            </Typography>
+            <Typography component="p">
+                Recent Updates: {this.state.countryInfo.recentUpdates}
+            </Typography>
+            {/* </Paper> */}
+
+        {/* <p>{this.state.countryInfo.advisoryText}</p> */}
       </div>
     );
   }

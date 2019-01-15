@@ -7,8 +7,17 @@ import {applyMiddleware, createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {logger} from 'redux-logger';
 
-const countryInfo = (state=[], action) => {
-    if (action.type === 'CHOOSE_COUNTRY'){
+// const countryInfo = (state=[], action) => {
+//     if (action.type === 'CHOOSE_COUNTRY'){
+//         return action.payload;
+//     }
+//     else {
+//         return state;
+//     }
+// }
+
+const showInfo = (state={}, action) => {
+    if (action.type === 'SET_INFO'){
         return action.payload;
     }
     else {
@@ -17,7 +26,8 @@ const countryInfo = (state=[], action) => {
 }
 
 const allReducers = combineReducers({
-    countryInfo,
+    // countryInfo,
+    showInfo
 });
 
 const storeInstance = createStore(

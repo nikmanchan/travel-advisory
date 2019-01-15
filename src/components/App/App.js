@@ -5,11 +5,14 @@ import TravelContent from "../TravelContent/TravelContent";
 import "./App.css";
 
 class App extends Component {
+
+
   render() {
     return (
       <div>
         <h1>Travel Advisory</h1>
         <CountrySelect />
+        {/* <TravelContent /> */}
       </div>
     );
   }
