@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./SearchBar.css";
+import "./CountrySelect.css";
 import axios from "axios";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
@@ -30,7 +30,7 @@ const styles = theme => ({
   }
 });
 
-class SearchBar extends Component {
+class CountrySelect extends Component {
   state = {
     country: "",
     advisoryState: "",
@@ -106,8 +106,8 @@ const mapStateToProps = state => ({
 });
 
 // needed for jss styles
-SearchBar.propTypes = {
+CountrySelect.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(connect(mapStateToProps)(SearchBar));
+export default withStyles(styles)(connect(mapStateToProps)(CountrySelect));

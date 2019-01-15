@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
-import SearchBar from "../SearchBar/SearchBar";
+import CountrySelect from "../CountrySelect/CountrySelect";
 import "./App.css";
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <h1>Travel Advisory</h1>
-        <SearchBar />
+        <CountrySelect />
       </div>
     );
   }
