@@ -40,6 +40,11 @@ class CountrySelect extends Component {
     countryInfo: []
   };
 
+  formatDate = (date) => {
+    let dateToFormat = new Date(date).toDateString();
+    return dateToFormat;
+  }
+
   handleChange = property => event => {
     this.setState({
       [property]: event.target.value
@@ -55,7 +60,8 @@ class CountrySelect extends Component {
         }
       )
       .then(response =>
-
+        // console.log(response.data)
+        
         this.setState({
           countryInfo: response.data
         }),
@@ -117,7 +123,7 @@ class CountrySelect extends Component {
                 Advisories
             </Typography>
             <Typography component="p">
-                Publish Date: {this.state.countryInfo.publishedDate}
+                Publish Date: {this.formatDate(this.state.countryInfo.publishedDate)}
             </Typography>
             <Typography component="p">
                 Status: {this.state.countryInfo.advisoryText}
