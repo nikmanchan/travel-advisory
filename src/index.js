@@ -9,7 +9,7 @@ import {logger} from 'redux-logger';
 
 const countryInfo = (state=[], action) => {
     if (action.type === 'CHOOSE_COUNTRY'){
-        return ([...state, action.payload]);
+        return [action.payload];
     }
     else {
         return state;
