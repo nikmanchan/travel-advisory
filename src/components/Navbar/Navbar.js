@@ -25,6 +25,11 @@ const styles = {
 };
 
 class Navbar extends Component {
+
+    handleScrollTop = () => {
+        document.documentElement.scrollTop = 0;
+    }
+
   render() {
     const { classes } = this.props;
 
@@ -33,7 +38,7 @@ class Navbar extends Component {
         <AppBar position="fixed">
           <Toolbar>
             <div className="navbarButtons">
-              <Button>
+              <Button onClick={this.handleScrollTop}>
                 <Typography
                   variant="h5"
                   color="inherit"
@@ -43,7 +48,7 @@ class Navbar extends Component {
                 </Typography>
               </Button>
 
-              <Button color="inherit">
+              <Button color="inherit" >
                 <IconButton>
                   <Close />
                 </IconButton>
