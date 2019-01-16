@@ -18,7 +18,6 @@ const countryInfo = (state=[], action) => {
 
 const allReducers = combineReducers({
     countryInfo
-    // showInfo
 });
 
 const storeInstance = createStore(

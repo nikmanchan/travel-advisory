@@ -17,6 +17,7 @@ class App extends Component {
 
 
   render() {
+    // declared for later styling of content
     // const { classes } = this.props;
 
 
