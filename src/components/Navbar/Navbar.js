@@ -8,8 +8,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Close from "@material-ui/icons/Close";
+// Icon for future close all panels button
+// import IconButton from "@material-ui/core/IconButton";
+// import Close from "@material-ui/icons/Close";
 
 const styles = {
   root: {
@@ -38,6 +39,7 @@ class Navbar extends Component {
         <AppBar position="fixed">
           <Toolbar>
             <div className="navbarButtons">
+
               <Button onClick={this.handleScrollTop}>
                 <Typography
                   variant="h5"
@@ -48,11 +50,14 @@ class Navbar extends Component {
                 </Typography>
               </Button>
 
-              <Button color="inherit" >
+            {/* Future close all panels button */}
+
+              {/* <Button color="inherit" >
                 <IconButton>
                   <Close />
                 </IconButton>
-              </Button>
+              </Button> */}
+
             </div>
           </Toolbar>
         </AppBar>
