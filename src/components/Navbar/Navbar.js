@@ -28,14 +28,24 @@ class Navbar extends Component {
 
 
   render() {
-    // declared for later styling of content
-    // const { classes } = this.props;
+    
+    const { classes } = this.props;
 
 
     return (
-        <div>
-
-        </div>
+        <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h3" color="inherit" className={classes.grow}>
+              Travel Advisory
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
     );
   }
 }
