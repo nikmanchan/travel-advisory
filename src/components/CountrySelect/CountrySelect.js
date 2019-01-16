@@ -71,7 +71,7 @@ class CountrySelect extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className="countrySelectComponent">
         <form className={classes.root} autoComplete="off">
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor="age-simple">Countries</InputLabel>
