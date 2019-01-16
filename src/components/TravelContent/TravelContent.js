@@ -22,10 +22,10 @@ const styles = theme => ({
 });
 
 class TravelContent extends Component {
-    formatDate = date => {
-        let dateToFormat = new Date(date).toDateString();
-        return dateToFormat;
-      };
+  formatDate = date => {
+    let dateToFormat = new Date(date).toDateString();
+    return dateToFormat;
+  };
 
   render() {
     const { classes } = this.props;
@@ -35,9 +35,11 @@ class TravelContent extends Component {
         <div className="travelContainer">
           {this.props.countryInfo.map((info, index) => (
             <div key={index}>
-            <Typography variant="h5" gutterBottom>
+              <Typography variant="h5" gutterBottom>
                 Published: {this.formatDate(info.publishedDate)}
-            </Typography>
+              </Typography>
+
+              {/* Advisory Status */}
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>
@@ -49,6 +51,7 @@ class TravelContent extends Component {
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
+              {/* Vaccination */}
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>
@@ -69,10 +72,11 @@ class TravelContent extends Component {
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
+              {/* Travel Requirements */}
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>
-                    Entry and Exit Requirements
+                    Travel Requirements
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
@@ -89,25 +93,70 @@ class TravelContent extends Component {
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
+              {/* Climate */}
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>Climate</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  {!info.climate.climateInfo.length > 0 ? (
+                    <p>N/A</p>
+                  ) : (
+                    <Typography component={"div"} variant={"body2"}>
+                      {info.climate.climateInfo.map((data, index) => (
+                        <p key={index}>
+                          <strong>{data.category}</strong>: &nbsp;
+                          <span>{data.description}</span>
+                        </p>
+                      ))}
+                    </Typography>
+                  )}
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+
+              {/* Law and Culture */}
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>
-                    Climate
+                    Law and Culture
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                    {!info.climate.climateInfo.length > 0 ? <p>N/A</p> :
-                        <Typography component={"div"} variant={"body2"}>
-                            {info.climate.climateInfo.map(
-                            (data, index) => (
-                                <p key={index}>
-                                <strong>{data.category}</strong>: &nbsp;
-                                <span>{data.description}</span>
-                                </p>
-                            )
-                            )}
-                        </Typography>
-                    }    
+                {!info.lawAndCulture.lawAndCultureInfo.length > 0 ? (
+                    <p>N/A</p>
+                  ) : (
+                    <Typography component={"div"} variant={"body2"}>
+                      {info.lawAndCulture.lawAndCultureInfo.map((data, index) => (
+                        <p key={index}>
+                          <strong>{data.category}</strong>: &nbsp;
+                          <span>{data.description}</span>
+                        </p>
+                      ))}
+                    </Typography>
+                  )}
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+
+              {/* Safety */}
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>
+                    Safety Considerations
+                  </Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                {!info.safety.safetyInfo.length > 0 ? (
+                    <p>N/A</p>
+                  ) : (
+                    <Typography component={"div"} variant={"body2"}>
+                      {info.safety.safetyInfo.map((data, index) => (
+                        <p key={index}>
+                          <strong>{data.category}</strong>: &nbsp;
+                          <span>{data.description}</span>
+                        </p>
+                      ))}
+                    </Typography>
+                  )}
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             </div>

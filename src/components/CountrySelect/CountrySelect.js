@@ -78,6 +78,7 @@ class CountrySelect extends Component {
             <Select
               value={this.state.country}
               onChange={this.handleChange("country")}
+              className="countrySelect"
             >
               <MenuItem value="">
                 <em>None</em>
