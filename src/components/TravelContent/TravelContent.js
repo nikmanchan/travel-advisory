@@ -22,9 +22,10 @@ const styles = theme => ({
 });
 
 class TravelContent extends Component {
-  handleClick = () => {
-    console.log(this.props.countryInfo);
-  };
+    formatDate = date => {
+        let dateToFormat = new Date(date).toDateString();
+        return dateToFormat;
+      };
 
   render() {
     const { classes } = this.props;
@@ -34,6 +35,9 @@ class TravelContent extends Component {
         <div className="travelContainer">
           {this.props.countryInfo.map((info, index) => (
             <div key={index}>
+            <Typography variant="h5" gutterBottom>
+                Published: {this.formatDate(info.publishedDate)}
+            </Typography>
               <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>

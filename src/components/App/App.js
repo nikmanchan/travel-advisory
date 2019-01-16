@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {connect} from 'react-redux';
 import CountrySelect from "../CountrySelect/CountrySelect";
 import "./App.css";
+import 'typeface-roboto';
 
 class App extends Component {
 
