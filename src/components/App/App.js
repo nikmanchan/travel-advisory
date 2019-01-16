@@ -25,9 +25,6 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <Typography component="h4" variant="h4" gutterBottom className="App-Header">
-          Travel Advisory
-        </Typography>
         {/* Country Select Form */}
         <CountrySelect />
       </div>
