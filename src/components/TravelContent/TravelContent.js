@@ -54,10 +54,10 @@ class TravelContent extends Component {
                 <ExpansionPanelDetails>
                   <Typography component={"div"} variant={"body2"}>
                     {info.health.diseasesAndVaccinesInfo.Vaccines.map(
-                      (description, index) => (
+                      (data, index) => (
                         <p key={index}>
-                          <strong>{description.category}</strong>: &nbsp;
-                          <span>{description.description}</span>
+                          <strong>{data.category}</strong>: &nbsp;
+                          <span>{data.description}</span>
                         </p>
                       )
                     )}
@@ -74,10 +74,30 @@ class TravelContent extends Component {
                 <ExpansionPanelDetails>
                   <Typography component={"div"} variant={"body2"}>
                     {info.entryExitRequirement.requirementInfo.map(
-                      (description, index) => (
+                      (data, index) => (
                         <p key={index}>
-                          <strong>{description.category}</strong>: &nbsp;
-                          <span>{description.description}</span>
+                          <strong>{data.category}</strong>: &nbsp;
+                          <span>{data.description}</span>
+                        </p>
+                      )
+                    )}
+                  </Typography>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>
+                    Climate
+                  </Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <Typography component={"div"} variant={"body2"}>
+                    {info.climate.climateInfo.map(
+                      (data, index) => (
+                        <p key={index}>
+                          <strong>{data.category}</strong>: &nbsp;
+                          <span>{data.description}</span>
                         </p>
                       )
                     )}
