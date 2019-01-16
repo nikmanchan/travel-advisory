@@ -96,16 +96,18 @@ class TravelContent extends Component {
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Typography component={"div"} variant={"body2"}>
-                    {info.climate.climateInfo.map(
-                      (data, index) => (
-                        <p key={index}>
-                          <strong>{data.category}</strong>: &nbsp;
-                          <span>{data.description}</span>
-                        </p>
-                      )
-                    )}
-                  </Typography>
+                    {!info.climate.climateInfo.length > 0 ? <p>N/A</p> :
+                        <Typography component={"div"} variant={"body2"}>
+                            {info.climate.climateInfo.map(
+                            (data, index) => (
+                                <p key={index}>
+                                <strong>{data.category}</strong>: &nbsp;
+                                <span>{data.description}</span>
+                                </p>
+                            )
+                            )}
+                        </Typography>
+                    }    
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             </div>
