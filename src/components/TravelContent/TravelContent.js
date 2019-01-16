@@ -4,7 +4,6 @@ import "./TravelContent.css";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import Card from "@material-ui/core/Card";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -42,9 +41,7 @@ class TravelContent extends Component {
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Typography>
-                  {info.advisoryText}
-                  </Typography>
+                  <Typography>{info.advisoryText}</Typography>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
@@ -55,57 +52,38 @@ class TravelContent extends Component {
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                    <Typography>
-                {info.health.diseasesAndVaccinesInfo.Vaccines.map(
-                (description, index) => (
-                    <p>
-                        <strong>{description.category}</strong>:
-                        &nbsp;
-                        <span>{description.description}</span>
-                    </p>
-                
-                )
-              )}
-                    </Typography>
+                  <Typography>
+                    {info.health.diseasesAndVaccinesInfo.Vaccines.map(
+                      (description, index) => (
+                        <p key={index}>
+                          <strong>{description.category}</strong>: &nbsp;
+                          <span>{description.description}</span>
+                        </p>
+                      )
+                    )}
+                  </Typography>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
-              <Typography variant="h5" component="h4">
-                <u>Vaccine Considerations</u>
-              </Typography>
-              {info.health.diseasesAndVaccinesInfo.Vaccines.map(
-                (description, index) => (
-                <div className="vaccineDisplay" key={index}>
-                    <div className="vaccineCells">
-                        <Typography variant="h6" component="h6">
-                        {description.category}
-                        </Typography>
-                        <Typography component="p">
-                        {description.description}
-                        </Typography>
-                    </div>
-                </div>
-                )
-              )}
-              <br />
-              <Typography variant="h5" component="h4">
-                <u>Entry and Exit Requirements</u>
-              </Typography>
-              <br />
-              {/* <Typography component="p">{info.entryExitRequirement.description}</Typography> */}
-              {info.entryExitRequirement.requirementInfo.map(
-                (description, index) => (
-                  <Card key={index}>
-                    <Typography variant="h6" component="h6">
-                      {description.category}
-                    </Typography>
-                    <Typography component="p">
-                      {description.description}
-                    </Typography>
-                    <br />
-                  </Card>
-                )
-              )}
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>
+                    Entry and Exit Requirements
+                  </Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <Typography>
+                    {info.entryExitRequirement.requirementInfo.map(
+                      (description, index) => (
+                        <p key={index}>
+                          <strong>{description.category}</strong>: &nbsp;
+                          <span>{description.description}</span>
+                        </p>
+                      )
+                    )}
+                  </Typography>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
             </div>
           ))}
         </div>
@@ -116,7 +94,6 @@ class TravelContent extends Component {
 
 const mapStateToProps = state => ({
   countryInfo: state.countryInfo
-  //   showInfo: state.showInfo
 });
 
 // needed for jss styles
