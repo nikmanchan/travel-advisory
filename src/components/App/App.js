@@ -5,6 +5,7 @@ import 'typeface-roboto';
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from '@material-ui/core/styles';
+import Navbar from '../Navbar/Navbar'
 
 const styles = {
   root: {
@@ -23,6 +24,7 @@ class App extends Component {
 
     return (
       <div>
+        <Navbar />
         <Typography component="h4" variant="h4" gutterBottom className="App-Header">
           Travel Advisory
         </Typography>

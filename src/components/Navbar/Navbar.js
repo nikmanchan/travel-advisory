@@ -39,7 +39,7 @@ class Navbar extends Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
-            <Typography variant="h3" color="inherit" className={classes.grow}>
+            <Typography variant="h5" color="inherit" className={classes.grow}>
               Travel Advisory
             </Typography>
             <Button color="inherit">Login</Button>
