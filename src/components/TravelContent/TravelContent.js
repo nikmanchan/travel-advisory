@@ -4,17 +4,22 @@ import "./TravelContent.css";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 // jss styles
 const styles = theme => ({
   card: {
-    paddingBottom: '2vmin'
+    paddingBottom: "2vmin"
   },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular
+  }
 });
 
 class TravelContent extends Component {
@@ -27,52 +32,77 @@ class TravelContent extends Component {
 
     return (
       <div>
-        <div class="travelContainer">
+        <div className="travelContainer">
           {this.props.countryInfo.map((info, index) => (
             <div key={index}>
-              <Typography variant="h5" component="h4">
-              <u>
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>
                     Advisory Status
-                </u>
-              </Typography>
-              <Typography component="p">{info.advisoryText}</Typography>
-              <br></br>
-              {/* <br></br> */}
-              <Typography variant="h5" component="h4">
-              <u>
+                  </Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <Typography>
+                  {info.advisoryText}
+                  </Typography>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>
                     Vaccine Considerations
-                </u>
+                  </Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <Typography>
+                {info.health.diseasesAndVaccinesInfo.Vaccines.map(
+                (description, index) => (
+                    <p>
+                        <strong>{description.category}</strong>:
+                        &nbsp;
+                        <span>{description.description}</span>
+                    </p>
+                
+                )
+              )}
+                    </Typography>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+
+              <Typography variant="h5" component="h4">
+                <u>Vaccine Considerations</u>
               </Typography>
               {info.health.diseasesAndVaccinesInfo.Vaccines.map(
                 (description, index) => (
-                  <Card key={index}>
-                    <Typography variant="h6" component="h6">
-                    {description.category}
-                    </Typography>
-                    <Typography component="p">
-                    {description.description}
-                    </Typography>
-                  </Card>
+                <div className="vaccineDisplay" key={index}>
+                    <div className="vaccineCells">
+                        <Typography variant="h6" component="h6">
+                        {description.category}
+                        </Typography>
+                        <Typography component="p">
+                        {description.description}
+                        </Typography>
+                    </div>
+                </div>
                 )
               )}
-              <br></br>
+              <br />
               <Typography variant="h5" component="h4">
-                <u>
-                    Entry and Exit Requirements
-                </u>
+                <u>Entry and Exit Requirements</u>
               </Typography>
-              <br></br>
+              <br />
               {/* <Typography component="p">{info.entryExitRequirement.description}</Typography> */}
               {info.entryExitRequirement.requirementInfo.map(
                 (description, index) => (
                   <Card key={index}>
                     <Typography variant="h6" component="h6">
-                    {description.category}
+                      {description.category}
                     </Typography>
                     <Typography component="p">
-                    {description.description}
+                      {description.description}
                     </Typography>
-                    <br></br>
+                    <br />
                   </Card>
                 )
               )}
