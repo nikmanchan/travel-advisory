@@ -36,7 +36,7 @@ class TravelContent extends Component {
           {this.props.countryInfo.map((info, index) => (
             <div key={index}>
               <Typography variant="h5" gutterBottom>
-                Published 
+                <b>Published</b>
                 <br></br>
                 {this.formatDate(info.publishedDate)}
               </Typography>
