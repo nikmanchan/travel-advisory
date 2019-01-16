@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./TravelContent.css";
-// import axios from "axios";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
