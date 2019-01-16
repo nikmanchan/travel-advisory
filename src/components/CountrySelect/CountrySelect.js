@@ -10,7 +10,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TravelContent from "../TravelContent/TravelContent";
-import Paper from "@material-ui/core/Paper";
+// import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 // jss styles
@@ -37,7 +37,11 @@ class CountrySelect extends Component {
   state = {
     country: "",
     advisoryState: "",
-    countryInfo: []
+    countryInfo: [],
+    vaccines: [],
+    climate: '',
+    publishedDate: '',
+    recentUpdates: '',
   };
 
   formatDate = (date) => {
@@ -60,17 +64,19 @@ class CountrySelect extends Component {
         }
       )
       .then(response =>
-        // console.log(response.data)
-        
-        this.setState({
-          countryInfo: response.data
-        }),
+        // this.setState({
+        //   advisoryState: response.data.advisoryText,
+        //   vaccines: response.data.health.Vaccines,
+        //   climate: response.data.climate.description,
+        //   publishedDate: response.data.publishedDate,
+        //   recentUpdates: response.data.recentUpdates
+        // }),
         // console.log(response.data)
 
-        // this.props.dispatch({
-        //   type: "CHOOSE_COUNTRY",
-        //   payload: response.data
-        // }),
+        this.props.dispatch({
+          type: "CHOOSE_COUNTRY",
+          payload: response.data
+        }),
         // this.props.dispatch({
         //   type: 'SHOW_INFO',
         //   payload: 'true'
@@ -115,22 +121,56 @@ class CountrySelect extends Component {
             <FormHelperText>Choose a country</FormHelperText>
           </FormControl>
         </form>
-        {/* <TravelContent 
-        countryInfo = {this.countryInfo}
-        /> */}
+        {!this.props.countryInfo.length ? null : 
+        <TravelContent />}
+         {/* <div>
+           {this.props.countryInfo.map((info, index) => 
+            <div key={index}>
+              <p>Status: {info.advisoryText}</p>
+              <p>Vaccine Category: {info.health.diseasesAndVaccinesInfo.Vaccines[0].category}</p>
+              {info.health.diseasesAndVaccinesInfo.Vaccines.map((description, index) => 
+              <p key={index}> 
+              <span>{description.category}:</span> &nbsp;
+              <span>{description.description}</span></p>
+              )}
+              <p>{info.health.description}</p> 
+
+            </div>
+        )}
+
+        </div>} */}
+        
+        
+        {/* // <p> Status: {this.props.countryInfo.advisoryText}</p>} */}
+        {/* {this.props.countryInfo.length && <TravelContent showInfo={this.props.countryInfo}/>} */}
             {/* <Paper className={classes.root} elevation={1}> */}
-            <Typography variant="h5" component="h3">
+            {/* <Typography variant="h5" component="h3">
                 Advisories
             </Typography>
             <Typography component="p">
-                Publish Date: {this.formatDate(this.state.countryInfo.publishedDate)}
+                Publish Date: {this.formatDate(this.state.publishedDate)}
             </Typography>
             <Typography component="p">
-                Status: {this.state.countryInfo.advisoryText}
+                Status: {this.state.advisoryState}
             </Typography>
             <Typography component="p">
-                Recent Updates: {this.state.countryInfo.recentUpdates}
-            </Typography>
+                Recent Updates: {this.state.recentUpdates}
+            </Typography> */}
+
+            {/* {this.state.vaccines.map(vaccine => 
+              <div>
+                <Typography component="p">
+                  Category {vaccine.category}
+                </Typography>
+                <Typography component="p">
+                  Description {vaccine.description}
+                </Typography>
+              </div>
+            )} */}
+              {/* {this.props.state.restaurants.map(restaurant => <RestaurantMarker key={restaurant.restaurant_id}
+            position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }}
+            name={restaurant.name} id={restaurant.restaurant_id} address={restaurant.address}
+          />)} */}
             {/* <Typography component="p">
                 Vaccines: {this.state.health.diseasesAndVaccinesInfo.vaccines}
             </Typography> */}
@@ -143,7 +183,7 @@ class CountrySelect extends Component {
 }
 
 const mapStateToProps = state => ({
-  country: state.country
+  countryInfo: state.countryInfo
 });
 
 // needed for jss styles
