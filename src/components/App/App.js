@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import CountrySelect from "../CountrySelect/CountrySelect";
-import TravelContent from "../TravelContent/TravelContent";
 import "./App.css";
 
 class App extends Component {

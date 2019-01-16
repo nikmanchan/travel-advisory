@@ -52,7 +52,7 @@ class TravelContent extends Component {
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Typography>
+                  <Typography component={"div"} variant={"body2"}>
                     {info.health.diseasesAndVaccinesInfo.Vaccines.map(
                       (description, index) => (
                         <p key={index}>
@@ -72,7 +72,7 @@ class TravelContent extends Component {
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                  <Typography>
+                  <Typography component={"div"} variant={"body2"}>
                     {info.entryExitRequirement.requirementInfo.map(
                       (description, index) => (
                         <p key={index}>
