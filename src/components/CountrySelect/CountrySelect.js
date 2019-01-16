@@ -41,11 +41,7 @@ class CountrySelect extends Component {
     recentUpdates: ""
   };
 
-  formatDate = date => {
-    let dateToFormat = new Date(date).toDateString();
-    return dateToFormat;
-  };
-  handleGoClick = event => {
+  handleSelect = event => {
     event.preventDefault();
     axios
       .get(
@@ -109,11 +105,11 @@ class CountrySelect extends Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={this.handleGoClick}
+              onClick={this.handleSelect}
               className={classes.button}
               styles={{ display: "inline" }}
             >
-              Go
+              Select
             </Button>
           </FormControl>
         </form>
