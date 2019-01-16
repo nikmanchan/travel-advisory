@@ -9,21 +9,12 @@ import {logger} from 'redux-logger';
 
 const countryInfo = (state=[], action) => {
     if (action.type === 'CHOOSE_COUNTRY'){
-        return ([...state], [action.payload]);
+        return ([...state, action.payload]);
     }
     else {
         return state;
     }
 }
-
-// const showInfo = (state={}, action) => {
-//     if (action.type === 'SET_INFO'){
-//         return action.payload;
-//     }
-//     else {
-//         return state;
-//     }
-// }
 
 const allReducers = combineReducers({
     countryInfo

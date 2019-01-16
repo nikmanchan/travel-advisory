@@ -12,24 +12,8 @@ import CardContent from '@material-ui/core/CardContent';
 
 // jss styles
 const styles = theme => ({
-  root: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  },
   card: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+    paddingBottom: '2vmin'
   },
 });
 
@@ -43,37 +27,58 @@ class TravelContent extends Component {
 
     return (
       <div>
-        <div>
+        <div class="travelContainer">
           {this.props.countryInfo.map((info, index) => (
             <div key={index}>
-            <Paper className={classes.root} elevation={1}>
-              <Typography component="p">Status: {info.advisoryText}</Typography>
-              <Typography component="h4">
-              Considerations
+              <Typography variant="h5" component="h4">
+              <u>
+                    Advisory Status
+                </u>
+              </Typography>
+              <Typography component="p">{info.advisoryText}</Typography>
+              <br></br>
+              {/* <br></br> */}
+              <Typography variant="h5" component="h4">
+              <u>
+                    Vaccine Considerations
+                </u>
               </Typography>
               {info.health.diseasesAndVaccinesInfo.Vaccines.map(
                 (description, index) => (
-                  <Typography component="p" key={index}>
-                    <span>{description.category}:</span> &nbsp;
-                    <span>{description.description}</span>
-                  </Typography>
-                  
+                  <Card key={index}>
+                    <Typography variant="h6" component="h6">
+                    {description.category}
+                    </Typography>
+                    <Typography component="p">
+                    {description.description}
+                    </Typography>
+                  </Card>
                 )
               )}
-              <p>{info.health.description}</p>
-              </Paper>
+              <br></br>
+              <Typography variant="h5" component="h4">
+                <u>
+                    Entry and Exit Requirements
+                </u>
+              </Typography>
+              <br></br>
+              {/* <Typography component="p">{info.entryExitRequirement.description}</Typography> */}
+              {info.entryExitRequirement.requirementInfo.map(
+                (description, index) => (
+                  <Card key={index}>
+                    <Typography variant="h6" component="h6">
+                    {description.category}
+                    </Typography>
+                    <Typography component="p">
+                    {description.description}
+                    </Typography>
+                    <br></br>
+                  </Card>
+                )
+              )}
             </div>
           ))}
         </div>
-        
-        {/* <Paper className={classes.root} elevation={1}>
-          <Typography variant="h5" component="h3">
-            Advisories
-          </Typography>
-          <Typography component="p">
-            {this.props.showInfo.advisoryText}
-          </Typography>
-        </Paper> */}
       </div>
     );
   }
