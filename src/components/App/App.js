@@ -3,7 +3,6 @@ import CountrySelect from "../CountrySelect/CountrySelect";
 import "./App.css";
 import 'typeface-roboto';
 import PropTypes from 'prop-types';
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from '@material-ui/core/styles';
 import Navbar from '../Navbar/Navbar'
 
@@ -25,7 +24,6 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        {/* Country Select Form */}
         <CountrySelect />
       </div>
     );
