@@ -1,3 +1,4 @@
+import reactPolymer from 'react-polymer' // Must be imported before React
 import React, { Component } from "react";
 import "./CountrySelect.css";
 import axios from "axios";
