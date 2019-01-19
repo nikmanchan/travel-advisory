@@ -1,4 +1,3 @@
-import reactPolymer from 'react-polymer' // Must be imported before React
 import React, { Component } from "react";
 import "./TravelContent.css";
 import { connect } from "react-redux";
