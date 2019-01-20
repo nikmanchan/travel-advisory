@@ -14,7 +14,8 @@ import Button from "@material-ui/core/Button";
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    // backgroundColor: 'green'
   },
   grow: {
     flexGrow: 1
@@ -46,7 +47,8 @@ class Navbar extends Component {
                   color="inherit"
                   className={classes.grow}
                 >
-                  <font color="white">Travel Advisory</font>
+                <img src={require('./asugo.logo.png')} height="70px" width="100px" alt=""></img> 
+                  {/* <font color="white">Travel Advisory</font> */}
                 </Typography>
               </Button>
 

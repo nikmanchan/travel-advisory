@@ -1,9 +1,9 @@
 {
-  "short_name": "asugo",
-  "name": "asugo",
+  "short_name": "asūgo",
+  "name": "asūgo",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "asugo.icon.jpg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
