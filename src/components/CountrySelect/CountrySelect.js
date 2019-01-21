@@ -11,7 +11,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TravelContent from "../TravelContent/TravelContent";
-
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const styles = theme => ({
   container: {},
@@ -68,51 +68,65 @@ class CountrySelect extends Component {
   render() {
     const { classes } = this.props;
 
+    const theme = createMuiTheme({
+      palette: {
+        primary: {
+          main: "#0d47a1"
+        },
+
+        secondary: {
+          main: "#1a237e"
+        }
+      }
+    });
+
     return (
       <div className="countrySelectComponent">
-        <form className={classes.root} autoComplete="off">
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="age-simple">Countries</InputLabel>
-            <Select
-              value={this.state.country}
-              onChange={this.handleChange("country")}
-              className="countrySelect"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="ID">Indonesia</MenuItem>
-              <MenuItem value="TH">Thailand</MenuItem>
-              <MenuItem value="PH">Phillippines</MenuItem>
-              <MenuItem value="IN">India</MenuItem>
-              <MenuItem value="JP">Japan</MenuItem>
-              <MenuItem value="HK">Hong Kong</MenuItem>
-              <MenuItem value="AU">Australia</MenuItem>
-              <MenuItem value="NZ">New Zealand</MenuItem>
-              <MenuItem value="GB">United Kingdom</MenuItem>
-              <MenuItem value="IE">Ireland</MenuItem>
-              <MenuItem value="IS">Iceland</MenuItem>
-              <MenuItem value="PT">Portugal</MenuItem>
-              <MenuItem value="ES">Spain</MenuItem>
-              <MenuItem value="GR">Greece</MenuItem>
-              <MenuItem value="IT">Italy</MenuItem>
-              <MenuItem value="DE">Germany</MenuItem>
-              {/* <MenuItem value='CA'>Canada</MenuItem> */}
-              <MenuItem value="MX">Mexico</MenuItem>
-            </Select>
-            <FormHelperText>Choose a country</FormHelperText>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleSelect}
-              className={classes.button}
-              styles={{ display: "inline" }}
-            >
-              Select
-            </Button>
-          </FormControl>
-        </form>
-        {!this.props.countryInfo.length ? null : <TravelContent />}
+        <MuiThemeProvider theme={theme}>
+          <form className={classes.root} autoComplete="off">
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="age-simple">Countries</InputLabel>
+              <Select
+                value={this.state.country}
+                onChange={this.handleChange("country")}
+                className="countrySelect"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="ID">Indonesia</MenuItem>
+                <MenuItem value="TH">Thailand</MenuItem>
+                <MenuItem value="PH">Phillippines</MenuItem>
+                <MenuItem value="IN">India</MenuItem>
+                <MenuItem value="JP">Japan</MenuItem>
+                <MenuItem value="HK">Hong Kong</MenuItem>
+                <MenuItem value="AU">Australia</MenuItem>
+                <MenuItem value="NZ">New Zealand</MenuItem>
+                <MenuItem value="GB">United Kingdom</MenuItem>
+                <MenuItem value="IE">Ireland</MenuItem>
+                <MenuItem value="IS">Iceland</MenuItem>
+                <MenuItem value="PT">Portugal</MenuItem>
+                <MenuItem value="ES">Spain</MenuItem>
+                <MenuItem value="GR">Greece</MenuItem>
+                <MenuItem value="IT">Italy</MenuItem>
+                <MenuItem value="DE">Germany</MenuItem>
+                {/* <MenuItem value='CA'>Canada</MenuItem> */}
+                <MenuItem value="MX">Mexico</MenuItem>
+              </Select>
+              <FormHelperText>Choose a country</FormHelperText>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.handleSelect}
+                className={classes.button}
+                styles={{ display: "inline" }}
+              >
+                Select
+              </Button>
+            </FormControl>
+          </form>
+          {!this.props.countryInfo.length ? null : <TravelContent />}
+        </MuiThemeProvider>
       </div>
     );
   }
