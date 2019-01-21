@@ -4,5 +4,9 @@
 }
 
 .countrySelectComponent {
-    margin-top: 30vmin;
+    margin-top: 25vmin;
+}
+
+.button {
+    margin-top: 1vmin;
 }
