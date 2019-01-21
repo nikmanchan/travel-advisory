@@ -8,6 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 // Icon for future close all panels button
 // import IconButton from "@material-ui/core/IconButton";
 // import Close from "@material-ui/icons/Close";
@@ -35,34 +36,47 @@ class Navbar extends Component {
   render() {
     const { classes } = this.props;
 
+    const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#ff8f00'},
+
+        secondary: {
+            main: '#ff8f00',
+        },
+    },
+    });
+
     return (
       <div className={classes.root}>
-        <AppBar position="fixed">
-          <Toolbar>
-            <div className="navbarButtons">
+        <MuiThemeProvider theme={theme}>
+            <AppBar position="fixed" color="primary">
+            <Toolbar>
+                <div className="navbarButtons">
 
-              <Button onClick={this.handleScrollTop}>
-                <Typography
-                  variant="h5"
-                  color="inherit"
-                  className={classes.grow}
-                >
-                <img src={require('./asugo.logo.png')} height="70px" width="100px" alt=""></img> 
-                  {/* <font color="white">Travel Advisory</font> */}
-                </Typography>
-              </Button>
+                <Button onClick={this.handleScrollTop}>
+                    <Typography
+                    variant="h5"
+                    color="inherit"
+                    className={classes.grow}
+                    >
+                    <img src={require('./asugo.logo.png')} height="50px" width="100px" alt="" className="logo"></img> 
+                    {/* <font color="white">Travel Advisory</font> */}
+                    </Typography>
+                </Button>
 
-            {/* Future close all panels button */}
+                {/* Future close all panels button */}
 
-              {/* <Button color="inherit" >
-                <IconButton>
-                  <Close />
-                </IconButton>
-              </Button> */}
+                {/* <Button color="inherit" >
+                    <IconButton>
+                    <Close />
+                    </IconButton>
+                </Button> */}
 
-            </div>
-          </Toolbar>
-        </AppBar>
+                </div>
+            </Toolbar>
+            </AppBar>
+        </MuiThemeProvider>
       </div>
     );
   }
