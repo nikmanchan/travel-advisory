@@ -1,4 +1,3 @@
-// import reactPolymer from "react-polymer"; // Must be imported before React
 import React, { Component } from "react";
 import "./CountrySelect.css";
 import axios from "axios";
@@ -12,20 +11,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TravelContent from "../TravelContent/TravelContent";
-// import {
-//   PaperCheckbox,
-//   PaperDropDown
-//   PaperToggleButton,
-//   PaperInput,
-//   PaperTextarea,
-//   IronAutogrowTextarea,
-//   PaperSlider,
-//   PaperMenu,
-//   PaperListbox,
-//   PaperRadioGroup,
-//   PaperTabs,
-//   IronSelector
-// } from 'react-polymer/input'
+
 
 const styles = theme => ({
   container: {},
